@@ -74,6 +74,12 @@
           <span>Data Admin</span></a>
       </li> -->
 
+      <li class="nav-item {{ (request()->is('master_data*')) ? 'active' : '' }}">
+        <a class="nav-link" href="{{url('master_data')}}">
+          <i class="fas fa-fw fa-bell"></i>
+          <span>Master Data</span></a>
+      </li>
+
       <li class="nav-item {{ (request()->is('categories*')) ? 'active' : '' }}">
         <a class="nav-link" href="{{url('categories')}}">
           <i class="fas fa-fw fa-book"></i>
@@ -212,7 +218,15 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          
+          @if ($errors->count() > 0)
+              <div class="alert alert-danger">
+                  <ul class="list-unstyled">
+                      @foreach($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+          @endif
           <!-- DataTales Example -->
           @yield('content')
 

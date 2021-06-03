@@ -1,27 +1,27 @@
 @extends('layouts.template')
 @section('content')
-<title>Booking | Proses Booking</title>
+<title>Booking | Proses Service</title>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Proses Booking</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Proses Service</h6>
     </div>
     <div class="card-body">
         <h6 class="m-0 font-weight-bold">Data Customer</h6>
         <table class="table table-bordered" cellspacing="0">
                 <tr>
                     <td>Atas Nama</td>
-                    <td>{{$booking['customer']['nama']}}</td>
+                    <td>{{$service['booking']['customer']['nama']}}</td>
                 </tr>
                 <tr>
                     <td>Alamat</td>
-                    <td>{{$booking['customer']['alamat']}}</td>
+                    <td>{{$service['booking']['customer']['alamat']}}</td>
                 </tr>
                 <tr>
                     <td>No HP</td>
-                    <td>{{$booking['customer']['no_hp']}}</td>
+                    <td>{{$service['booking']['customer']['no_hp']}}</td>
                 </tr>
         </table>
-        <h6 class="m-0 font-weight-bold">Data Booking</h6>
+        <h6 class="m-0 font-weight-bold">Data Service</h6>
         <table class="table table-bordered" cellspacing="0">
             <thead>
                 <tr>
@@ -29,32 +29,35 @@
                     <th>Tanggal & Jam</th>
                     <th>Tipe</th>
                     <th>Jenis</th>
-                    <th>Tahun</th>
+                    <th>Mekanik</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>{{$booking['category']['kategori']}}</td>
-                    <td>{{$booking['tanggal']}}</td>
-                    <td>{{$booking['type_mobil']}}</td>
-                    <td>{{$booking['jenis_mobil']}}</td>
-                    <td>{{$booking['tahun']}}</td>
+                    <td>{{$service['booking']['category']['kategori']}}</td>
+                    <td>{{$service['booking']['tanggal']}}</td>
+                    <td>{{$service['booking']['type_mobil']}}</td>
+                    <td>{{$service['booking']['jenis_mobil']}}</td>
+                    <td>{{$service['mekanik']}}</td>
                 </tr>
             </tbody>
         </table>
-        <form action="/booking/doprocess" method="post">
+        <form action="/services/doprocess" method="post">
             @csrf
-            <input type="hidden" name="booking_id" value="{{ $booking['id'] }}">
+            <input type="hidden" name="service_id" value="{{ $service['id'] }}">
             <div class="form-group">
-                <label for="">Mekanik</label>
-                <select name="mekanik" id="mekanik" class="form-control" required>
-                    <option>-- Pilih Mekanik --</option>
-                    @foreach ($mekanik as $k => $v)
-                        <option value="{{ $v['nama']}}">{{ $v['nama'] }}</option>
-                    @endforeach
-                </select>
+                <label for="">Catatan</label>
+                <textarea class="form-control" rows="8" name="catatan"></textarea>
             </div>
-            <input type="submit" value="Proses" class="btn btn-warning">
+            <div class="form-group">
+                <label for="">No Polisi Kendaraan</label>
+                <input class="form-control" name="no_polisi"/>
+            </div>
+            <div class="form-group">
+                <label for="">Total Biaya Service</label>
+                <input class="form-control" name="total_biaya"/>
+            </div>
+            <input type="submit" value="Submit" class="btn btn-success">
         </form>
     </div>
 </div>

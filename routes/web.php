@@ -63,23 +63,27 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('change-password', 'ChangePasswordController@index');
 // Route::post('change-password', 'ChangePasswordController@store')->name('change.password');
 
-Route::get('/sparepart','SparepartController@index');
-Route::post('/sparepart/store','SparepartController@store');
-Route::post('/sparepart/update','SparepartController@update');
-Route::get('/sparepart/edit/{id}','SparepartController@edit');
-Route::get('/sparepartlist','SparepartController@tojson');
-Route::get('/sparepart/get/{id}','SparepartController@getSparepartJson');
+// Route::get('/sparepart','SparepartController@index');
+// Route::post('/sparepart/store','SparepartController@store');
+// Route::post('/sparepart/update','SparepartController@update');
+// Route::get('/sparepart/edit/{id}','SparepartController@edit');
+// Route::get('/sparepartlist','SparepartController@tojson');
+// Route::get('/sparepart/get/{id}','SparepartController@getSparepartJson');
 
-Route::get('/kategori','KategoriServiceController@index');
-Route::post('/kategori/store','KategoriServiceController@store');
-Route::post('/kategori/update','KategoriServiceController@update');
-Route::get('/kategori/edit/{id_kategori}','KategoriServiceController@edit');
+// Route::get('/kategori','KategoriServiceController@index');
+// Route::post('/kategori/store','KategoriServiceController@store');
+// Route::post('/kategori/update','KategoriServiceController@update');
+// Route::get('/kategori/edit/{id_kategori}','KategoriServiceController@edit');
 
-Route::get('/estimasi','EstimasiController@index');
-Route::post('/estimasi/store','EstimasiController@store');
-Route::get('/estimasi/print/{id}','EstimasiController@print');
-Route::get('/estimasi/create','EstimasiController@create');
+// Route::get('/estimasi','EstimasiController@index');
+// Route::post('/estimasi/store','EstimasiController@store');
+// Route::get('/estimasi/print/{id}','EstimasiController@print');
+// Route::get('/estimasi/create','EstimasiController@create');
 
+Route::get('/master_data','MasterDataController@index');
+Route::post('/master_data/store','MasterDataController@store');
+Route::post('/master_data/update','MasterDataController@update');
+Route::get('/master_data/edit/{id_kategori}','MasterDataController@edit');
 
 Route::get('/categories','CategoriesController@index');
 Route::post('/categories/store','CategoriesController@store');
@@ -102,5 +106,6 @@ Route::post('/booking/doprocess','BookingsController@doProcess');
 
 
 Route::get('/services','BookingServicesController@list');
-// Route::get('/booking/process/{id}','BookingsController@process');
-// Route::post('/booking/doprocess','BookingsController@doProcess');
+Route::get('/services/spk/{id}','BookingServicesController@downloadSpk');
+Route::get('/services/process/{id}','BookingServicesController@process');
+Route::post('/services/doprocess','BookingServicesController@doProcess');

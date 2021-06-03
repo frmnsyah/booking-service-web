@@ -49,10 +49,10 @@ class BookingsController extends Controller
             $booking->status = 1;
             $booking->save();
             DB::commit();
-            return redirect('booking')->with('update','Data Berhasil Di Update');
+            return redirect('booking');
         } catch (Exception $e) {
             DB::rollBack();
-            return redirect('booking')->with('error', $e->getMessage());
+            return redirect('booking')->withErrors('error: '+ $e->getMessage());
         }
     }
 
@@ -63,7 +63,7 @@ class BookingsController extends Controller
             $req = $request->all();
             $date = date_create_from_format('j/n/Y H:i:s', $req['tanggal'] .' '. $req['jam'] . ':00');
             $categoryId = Categories::where('kategori', 'like', '%'. $req['cat_id'] .'%')->first();
-            $customer = Customers::find($req['cust_id'])->toArray();
+            $customer = Customers::find($req['cust_id']);
             Bookings::insert([
                 'cust_id' => intval($req['cust_id']),
                 'tanggal' => date_format($date, 'Y-m-d H:i:s'),
@@ -72,7 +72,7 @@ class BookingsController extends Controller
                 'jenis_mobil' => $req['jenis_mobil'],
                 'tahun' => $req['tahun'],
                 'status' => 0,
-                'lokasi' => strtolower($req['lokasi']) == 'dirumah' ? $customer['alamat'] : $req['lokasi'],
+                'lokasi' => strtolower($req['lokasi']) == 'dirumah' ? $customer->alamat : $req['lokasi'],
                 'created_at' => date('Y-m-d H:i:s')
             ]);
             DB::commit();
