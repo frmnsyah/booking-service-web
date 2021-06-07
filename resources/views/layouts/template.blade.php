@@ -67,13 +67,8 @@
       <!-- Nav Item - Utilities Collapse Menu -->
      
       <!-- Nav Item - Charts -->
-      <!-- @if(Auth::user()->level=='A')
-      <li class="nav-item {{ (request()->is('user*')) ? 'active' : '' }}">
-        <a class="nav-link" href="{{url('user')}}">
-          <i class="fas fa-fw fa-user"></i>
-          <span>Data Admin</span></a>
-      </li> -->
-
+      @if(Auth::user()->level=='A')
+      
       <li class="nav-item {{ (request()->is('master_data*')) ? 'active' : '' }}">
         <a class="nav-link" href="{{url('master_data')}}">
           <i class="fas fa-fw fa-bell"></i>

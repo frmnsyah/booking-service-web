@@ -42,6 +42,8 @@
                             @if(!$service['status'])
                             <a href="/services/spk/{{$service['id']}}" class="btn btn-success btn-sm ml-2">Print SPK</a>
                             <a href="/services/process/{{$service['id']}}" class="btn btn-primary btn-sm ml-2">Selesai</a>
+                            @else
+                            <a href="/services/detail/{{$service['id']}}" class="btn btn-info btn-sm ml-2">Detail</a>
                             @endif
                         </td>
                     </tr>

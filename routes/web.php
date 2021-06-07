@@ -108,4 +108,5 @@ Route::post('/booking/doprocess','BookingsController@doProcess');
 Route::get('/services','BookingServicesController@list');
 Route::get('/services/spk/{id}','BookingServicesController@downloadSpk');
 Route::get('/services/process/{id}','BookingServicesController@process');
+Route::get('/services/detail/{id}','BookingServicesController@detail');
 Route::post('/services/doprocess','BookingServicesController@doProcess');

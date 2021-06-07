@@ -29,5 +29,6 @@ $router->get('/type-mobil', 'DataServicesController@getTypeMobil');
 $router->get('/jenis-mobil', 'DataServicesController@getJenisMobil');
 $router->get('/kategori', 'DataServicesController@getKategoriService');
 $router->get('/lokasi', 'DataServicesController@getLokasiService');
-$router->post('/booking', 'BookingsController@postBooking');
+$router->post('/booking', 'DataServicesController@postBooking');
 $router->post('/booking-list', 'DataServicesController@bookingList');
+$router->get('/service/{id}', 'DataServicesController@getService');
