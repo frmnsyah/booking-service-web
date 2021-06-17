@@ -200,6 +200,7 @@ class DataServicesController extends Controller
             $customer->no_hp = $req['no_hp'];
             $customer->alamat = $req['alamat'];
             $customer->save();
+            DB::commit();
             return response()->json([
                 'success' => true,
                 'message' => 'Berhasil',

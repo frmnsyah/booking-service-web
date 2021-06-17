@@ -32,3 +32,4 @@ $router->get('/lokasi', 'DataServicesController@getLokasiService');
 $router->post('/booking', 'DataServicesController@postBooking');
 $router->post('/booking-list', 'DataServicesController@bookingList');
 $router->get('/service/{id}', 'DataServicesController@getService');
+$router->post('/update-account', 'DataServicesController@postUpdateAccount');
