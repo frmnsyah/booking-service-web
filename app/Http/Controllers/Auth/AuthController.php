@@ -37,9 +37,13 @@ class AuthController extends Controller
        // all good so return the token
        return response()->json([
             'customer_id' => $custData->id,
+            'nama' => $custData->nama,
+            'alamat' => $custData->alamat,
+            'no_hp' => $custData->no_hp,
             'success' => true, 
             'message' => 'Login Berhasil',
             'stacktrace' => ''
         ], 200);
    }
+
 }

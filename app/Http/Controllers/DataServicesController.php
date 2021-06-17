@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Bookings;
 use App\BookingServices;
 use App\Categories;
+use App\Customers;
 use App\LookupValues;
 use DB;
 use Exception;
@@ -184,6 +185,31 @@ class DataServicesController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => 'Gagal Proses Booking, silakan coba kembali dengan data yang benar',
+                'stacktrace' => $e->getMessage()
+            ], 200);
+        }
+    }
+
+    public function postUpdateAccount(Request $request)
+    {
+        DB::beginTransaction();
+        try {
+            $req = $request->all();
+            $customer = Customers::where('user_id', $req['user_id'])->first();
+            $customer->nama = $req['nama'];
+            $customer->no_hp = $req['no_hp'];
+            $customer->alamat = $req['alamat'];
+            $customer->save();
+            return response()->json([
+                'success' => true,
+                'message' => 'Berhasil',
+                'stacktrace' => ""
+            ], 200);
+        } catch (Exception $e) {
+            DB::rollBack();
+            return response()->json([
+                'success' => false,
+                'message' => 'Gagal Update Account, silakan coba kembali dengan data yang benar',
                 'stacktrace' => $e->getMessage()
             ], 200);
         }
