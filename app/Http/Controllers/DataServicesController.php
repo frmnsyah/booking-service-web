@@ -195,7 +195,7 @@ class DataServicesController extends Controller
         DB::beginTransaction();
         try {
             $req = $request->all();
-            $customer = Customers::where('user_id', $req['user_id'])->first();
+            $customer = Customers::find($req['user_id'])->first();
             $customer->nama = $req['nama'];
             $customer->no_hp = $req['no_hp'];
             $customer->alamat = $req['alamat'];
