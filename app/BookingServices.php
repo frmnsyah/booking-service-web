@@ -26,6 +26,7 @@ class BookingServices extends Model
 
     public function booking()
     {
+        dd($this->table);
         return $this->belongsTo('App\Bookings', 'booking_id');
     }
 }
